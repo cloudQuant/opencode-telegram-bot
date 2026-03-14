@@ -384,5 +384,14 @@ export const de: I18nDictionary = {
   "stt.not_configured":
     "🎤 Spracherkennung ist nicht konfiguriert.\n\nSetze STT_API_URL und STT_API_KEY in .env, um sie zu aktivieren.",
   "stt.error": "🔴 Audio konnte nicht erkannt werden: {error}",
-  "stt.empty_result": "🎤 Keine Sprache in der Audionachricht erkannt.",
+  "stt.empty_result": "🎤 Keine speech in the audio message detected.",
+
+  "cmd.description.loop": "Start auto-loop mode",
+  "cmd.description.stop_loop": "Stop auto-loop mode",
+  "cmd.description.loop_status": "Show loop status",
+
+  "loop.usage":
+    "🔄 Usage:\n/loop <prompt> - Start loop with prompt (max 100 iterations)\n/loop:50 <prompt> - start loop with 50 iterations\n/stop_loop - stop current loop\n/loop_status - show loop status\n\nExample:\n/loop Analyze code quality and suggest improvements",
+  "loop.already_active": "⚠️ A loop is already active. Use /stop_loop to stop it first.",
+  "loop.not_active": "⚠️ No active loop. Use /loop <prompt> to start one.",
 };

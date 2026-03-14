@@ -29,6 +29,7 @@ import {
   handleCommandsCallback,
   handleCommandTextArguments,
 } from "./commands/commands.js";
+import { loopCommand, stopLoopCommand, loopStatusCommand } from "./commands/loop.js";
 import {
   handleQuestionCallback,
   showCurrentQuestion,
@@ -61,6 +62,7 @@ import { downloadTelegramFile, toDataUri } from "./utils/file-download.js";
 import { sendMessageWithMarkdownFallback } from "./utils/send-with-markdown-fallback.js";
 import { getModelCapabilities, supportsInput } from "../model/capabilities.js";
 import { getStoredModel } from "../model/manager.js";
+import { loopManager } from "../loop/manager.js";
 import type { FilePartInput } from "@opencode-ai/sdk/v2";
 
 let botInstance: Bot<Context> | null = null;
@@ -567,6 +569,9 @@ export function createBot(): Bot<Context> {
   bot.command("abort", abortCommand);
   bot.command("rename", renameCommand);
   bot.command("commands", commandsCommand);
+  bot.command("loop", loopCommand);
+  bot.command("stop_loop", stopLoopCommand);
+  bot.command("loop_status", loopStatusCommand);
 
   bot.on("message:text", unknownCommandMiddleware);
 
@@ -727,6 +732,7 @@ export function createBot(): Bot<Context> {
     logger.debug(`[Bot] Received voice message, chatId=${ctx.chat.id}`);
     botInstance = bot;
     chatIdInstance = ctx.chat.id;
+    loopManager.initialize(bot, ctx.chat.id, ensureEventSubscription);
     await handleVoiceMessage(ctx, voicePromptDeps);
   });
 
@@ -734,6 +740,7 @@ export function createBot(): Bot<Context> {
     logger.debug(`[Bot] Received audio message, chatId=${ctx.chat.id}`);
     botInstance = bot;
     chatIdInstance = ctx.chat.id;
+    loopManager.initialize(bot, ctx.chat.id, ensureEventSubscription);
     await handleVoiceMessage(ctx, voicePromptDeps);
   });
 
@@ -766,6 +773,7 @@ export function createBot(): Bot<Context> {
         if (caption.trim().length > 0) {
           botInstance = bot;
           chatIdInstance = ctx.chat.id;
+          loopManager.initialize(bot, ctx.chat.id, ensureEventSubscription);
           const promptDeps = { bot, ensureEventSubscription };
           await processUserPrompt(ctx, caption, promptDeps);
         }
@@ -806,6 +814,7 @@ export function createBot(): Bot<Context> {
     logger.debug(`[Bot] Received document message, chatId=${ctx.chat.id}`);
     botInstance = bot;
     chatIdInstance = ctx.chat.id;
+    loopManager.initialize(bot, ctx.chat.id, ensureEventSubscription);
     const deps = { bot, ensureEventSubscription };
     await handleDocumentMessage(ctx, deps);
   });
@@ -818,6 +827,7 @@ export function createBot(): Bot<Context> {
 
     botInstance = bot;
     chatIdInstance = ctx.chat.id;
+    loopManager.initialize(bot, ctx.chat.id, ensureEventSubscription);
 
     if (text.startsWith("/")) {
       return;

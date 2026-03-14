@@ -337,4 +337,13 @@ export const zh: I18nDictionary = {
     "🎤 语音识别尚未配置。\n\n在 .env 中设置 STT_API_URL 和 STT_API_KEY 以启用。",
   "stt.error": "🔴 识别音频失败：{error}",
   "stt.empty_result": "🎤 音频消息中未检测到语音。",
+
+  "cmd.description.loop": "启动自动循环模式",
+  "cmd.description.stop_loop": "停止自动循环模式",
+  "cmd.description.loop_status": "查看循环状态",
+
+  "loop.usage":
+    "🔄 用法：\n/loop <提示词> - 启动循环（最多 100 次）\n/loop:50 <提示词> - 启动循环（最多 50 次）\n/stop_loop - 停止当前循环\n/loop_status - 查看循环状态\n\n示例：\n/loop 分析代码质量并给出优化建议，然后直接进行改进",
+  "loop.already_active": "⚠️ 已有循环在运行中。请先使用 /stop_loop 停止它。",
+  "loop.not_active": "⚠️ 没有活动的循环。使用 /loop <提示词> 启动一个。",
 };

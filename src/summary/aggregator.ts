@@ -7,6 +7,7 @@ import type { PermissionRequest } from "../permission/types.js";
 import type { FileChange } from "../pinned/types.js";
 import { logger } from "../utils/logger.js";
 import { getCurrentProject } from "../settings/manager.js";
+import { loopManager } from "../loop/manager.js";
 
 export interface SummaryInfo {
   sessionId: string;
@@ -711,8 +712,15 @@ class SummaryAggregator {
 
     logger.info(`[Aggregator] Session became idle: ${sessionID}`);
 
-    // Stop typing indicator when session goes idle
     this.stopTypingIndicator();
+
+    if (loopManager.isActive()) {
+      setImmediate(() => {
+        loopManager.onSessionIdle().catch((err) => {
+          logger.error("[Aggregator] Error in loop onSessionIdle:", err);
+        });
+      });
+    }
   }
 
   private handleSessionCompacted(

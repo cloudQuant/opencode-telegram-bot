@@ -370,6 +370,15 @@ export const en = {
     "🎤 Voice recognition is not configured.\n\nSet STT_API_URL and STT_API_KEY in .env to enable it.",
   "stt.error": "🔴 Failed to recognize audio: {error}",
   "stt.empty_result": "🎤 No speech detected in the audio message.",
+
+  "cmd.description.loop": "Start auto-loop mode",
+  "cmd.description.stop_loop": "Stop auto-loop mode",
+  "cmd.description.loop_status": "Show loop status",
+
+  "loop.usage":
+    "🔄 Usage:\n/loop <prompt> - Start loop with prompt (max 100 iterations)\n/loop:50 <prompt> - Start loop with 50 iterations\n/stop_loop - Stop current loop\n/loop_status - Show loop status\n\nExample:\n/loop Analyze code quality and suggest improvements",
+  "loop.already_active": "⚠️ A loop is already active. Use /stop_loop to stop it first.",
+  "loop.not_active": "⚠️ No active loop. Use /loop <prompt> to start one.",
 } as const;
 
 export type I18nKey = keyof typeof en;

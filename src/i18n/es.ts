@@ -384,4 +384,13 @@ export const es: I18nDictionary = {
     "🎤 El reconocimiento de voz no está configurado.\n\nConfigura STT_API_URL y STT_API_KEY en .env para habilitarlo.",
   "stt.error": "🔴 No se pudo reconocer el audio: {error}",
   "stt.empty_result": "🎤 No se detectó voz en el mensaje de audio.",
+
+  "cmd.description.loop": "Iniciar modo de bucle automático",
+  "cmd.description.stop_loop": "Detener modo de bucle",
+  "cmd.description.loop_status": "Mostrar estado del bucle",
+
+  "loop.usage":
+    "🔄 Uso:\n/loop <prompt> - Iniciar bucle con prompt (máx. 100 iteraciones)\n/loop:50 <prompt> - Iniciar bucle con 50 iteraciones\n/stop_loop - Detener bucle actual\n/loop_status - Mostrar estado del bucle\n\nEjemplo:\n/loop Analiza la calidad del código y sugiere mejoras",
+  "loop.already_active": "⚠️ Ya hay un bucle activo. Usa /stop_loop para detenerlo primero.",
+  "loop.not_active": "⚠️ No hay bucle activo. Usa /loop <prompt> para iniciar uno.",
 };
