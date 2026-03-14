@@ -53,10 +53,15 @@ export async function loopCommand(ctx: CommandContext<Context>): Promise<void> {
       `🔄 Loop started!\n` +
         `📝 Prompt: ${parsed.prompt.slice(0, 100)}${parsed.prompt.length > 100 ? "..." : ""}\n` +
         `⏱️ Delay: 10 seconds between iterations${maxIterationsInfo}\n\n` +
-        `Use /stop_loop to stop.`,
+        `Use /stop_loop to stop, /loop_status for details.`,
     );
 
     logger.info(`[LoopCommand] Loop started by user, maxIterations=${config.maxIterations}`);
+
+    // Trigger first iteration immediately (fire-and-forget)
+    loopManager.triggerFirstIteration().catch((err) => {
+      logger.error("[LoopCommand] Error triggering first iteration:", err);
+    });
   } catch (error) {
     if (error instanceof Error && error.message.includes("already active")) {
       await ctx.reply(t("loop.already_active"));
@@ -86,22 +91,43 @@ export async function stopLoopCommand(ctx: CommandContext<Context>): Promise<voi
 }
 
 export async function loopStatusCommand(ctx: CommandContext<Context>): Promise<void> {
-  const config = loopManager.getConfig();
+  const status = loopManager.getStatus();
 
-  if (!config || !config.isActive) {
+  if (!status) {
     await ctx.reply(t("loop.not_active"));
     return;
   }
 
-  const iteration = config.currentIteration;
-  const remaining = config.maxIterations - iteration;
+  const { config, currentSessionId, isProcessing, iterationHistory } = status;
   const elapsed = Math.round((Date.now() - config.startedAt) / 1000 / 60);
+  const remaining = config.maxIterations - config.currentIteration;
 
-  await ctx.reply(
-    `🔄 Loop Status\n` +
-      `📊 Current iteration: ${iteration}/${config.maxIterations}\n` +
-      `⏱️ Elapsed: ${elapsed} minutes\n` +
-      `📈 Remaining: ${remaining} iterations\n` +
-      `📝 Prompt: ${config.prompt.slice(0, 100)}${config.prompt.length > 100 ? "..." : ""}`,
-  );
+  const lines: string[] = [
+    `🔄 Loop Status`,
+    ``,
+    `📊 Iteration: ${config.currentIteration}/${config.maxIterations}`,
+    `⏱️ Elapsed: ${elapsed} min | Remaining: ${remaining} iterations`,
+    `📝 Prompt: ${config.prompt.slice(0, 100)}${config.prompt.length > 100 ? "..." : ""}`,
+    ``,
+    `⚡ State: ${isProcessing ? "Processing" : "Waiting for next iteration"}`,
+  ];
+
+  if (currentSessionId) {
+    lines.push(`🆔 Current session: ${currentSessionId.slice(0, 20)}...`);
+  }
+
+  if (iterationHistory.length > 0) {
+    lines.push(``, `📋 Recent iterations:`);
+    for (const record of iterationHistory) {
+      const duration = record.completedAt
+        ? `${Math.round((record.completedAt - record.startedAt) / 1000)}s`
+        : "in progress...";
+      const statusIcon = record.completedAt ? "✅" : "⏳";
+      lines.push(
+        `  ${statusIcon} #${record.iteration} | ${record.sessionId.slice(0, 16)}... | ${duration}`,
+      );
+    }
+  }
+
+  await ctx.reply(lines.join("\n"));
 }

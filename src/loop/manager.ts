@@ -16,8 +16,23 @@ export interface LoopConfig {
   startedAt: number;
 }
 
+export interface IterationRecord {
+  iteration: number;
+  sessionId: string;
+  startedAt: number;
+  completedAt: number | null;
+}
+
+export interface LoopStatus {
+  config: LoopConfig;
+  currentSessionId: string | null;
+  isProcessing: boolean;
+  iterationHistory: IterationRecord[];
+}
+
 const DEFAULT_MAX_ITERATIONS = 100;
 const DEFAULT_DELAY_MS = 10_000;
+const MAX_HISTORY = 10;
 
 class LoopManager {
   private config: LoopConfig | null = null;
@@ -25,6 +40,9 @@ class LoopManager {
   private chatId: number | null = null;
   private ensureEventSubscription: ((directory: string) => Promise<void>) | null = null;
   private timeoutId: ReturnType<typeof setTimeout> | null = null;
+  private currentSessionId: string | null = null;
+  private isProcessing: boolean = false;
+  private iterationHistory: IterationRecord[] = [];
 
   initialize(
     bot: Bot,
@@ -40,6 +58,10 @@ class LoopManager {
     if (this.config?.isActive) {
       throw new Error("Loop already active. Use /stop_loop first.");
     }
+
+    this.iterationHistory = [];
+    this.currentSessionId = null;
+    this.isProcessing = false;
 
     this.config = {
       prompt,
@@ -65,6 +87,8 @@ class LoopManager {
 
     const previousConfig = this.config;
     this.config = null;
+    this.currentSessionId = null;
+    this.isProcessing = false;
 
     if (previousConfig) {
       logger.info(`[LoopManager] Stopped loop after ${previousConfig.currentIteration} iterations`);
@@ -81,9 +105,45 @@ class LoopManager {
     return this.config?.isActive ?? false;
   }
 
+  getStatus(): LoopStatus | null {
+    if (!this.config || !this.config.isActive) {
+      return null;
+    }
+
+    return {
+      config: { ...this.config },
+      currentSessionId: this.currentSessionId,
+      isProcessing: this.isProcessing,
+      iterationHistory: [...this.iterationHistory],
+    };
+  }
+
+  /**
+   * Trigger the first iteration immediately after /loop starts.
+   * This avoids waiting for a session.idle event that may never come.
+   */
+  async triggerFirstIteration(): Promise<void> {
+    if (!this.config?.isActive || !this.bot || !this.chatId || !this.ensureEventSubscription) {
+      logger.warn("[LoopManager] Cannot trigger first iteration: not properly initialized");
+      return;
+    }
+
+    logger.info("[LoopManager] Triggering first iteration immediately");
+    await this.executeNextIteration();
+  }
+
   async onSessionIdle(): Promise<void> {
     if (!this.config?.isActive) {
       return;
+    }
+
+    // Mark current iteration as completed
+    this.isProcessing = false;
+    if (this.iterationHistory.length > 0) {
+      const lastRecord = this.iterationHistory[this.iterationHistory.length - 1];
+      if (!lastRecord.completedAt) {
+        lastRecord.completedAt = Date.now();
+      }
     }
 
     const currentConfig = this.config;
@@ -125,9 +185,8 @@ class LoopManager {
     }
 
     try {
-      logger.info(
-        `[LoopManager] Creating new session for iteration ${this.config.currentIteration + 1}`,
-      );
+      const iterationNumber = this.config.currentIteration + 1;
+      logger.info(`[LoopManager] Creating new session for iteration ${iterationNumber}`);
 
       const { data: session, error } = await opencodeClient.session.create({
         directory: project.worktree,
@@ -148,6 +207,19 @@ class LoopManager {
 
       setCurrentSession(sessionInfo);
       await ingestSessionInfoForCache(session);
+
+      // Track iteration
+      this.currentSessionId = session.id;
+      this.isProcessing = true;
+      this.iterationHistory.push({
+        iteration: iterationNumber,
+        sessionId: session.id,
+        startedAt: Date.now(),
+        completedAt: null,
+      });
+      if (this.iterationHistory.length > MAX_HISTORY) {
+        this.iterationHistory.shift();
+      }
 
       logger.info(`[LoopManager] Created new session: id=${session.id}, title="${session.title}"`);
 
@@ -182,7 +254,9 @@ class LoopManager {
         }
       }
 
-      logger.info(`[LoopManager] Sending prompt for iteration ${this.config.currentIteration + 1}`);
+      logger.info(`[LoopManager] Sending prompt for iteration ${iterationNumber}`);
+
+      await this.sendIterationStartMessage(iterationNumber);
 
       const { error: promptError } = await opencodeClient.session.prompt(promptOptions);
 
@@ -193,11 +267,7 @@ class LoopManager {
         return;
       }
 
-      await this.sendIterationStatus(this.config);
-
-      logger.info(
-        `[LoopManager] Prompt sent successfully for iteration ${this.config.currentIteration + 1}`,
-      );
+      logger.info(`[LoopManager] Prompt sent successfully for iteration ${iterationNumber}`);
     } catch (err) {
       logger.error("[LoopManager] Unexpected error in iteration:", err);
       await this.sendErrorMessage("Unexpected error occurred");
@@ -205,19 +275,20 @@ class LoopManager {
     }
   }
 
-  private async sendIterationStatus(config: LoopConfig): Promise<void> {
-    if (!this.bot || !this.chatId) {
+  private async sendIterationStartMessage(iteration: number): Promise<void> {
+    if (!this.bot || !this.chatId || !this.config) {
       return;
     }
 
-    const iteration = config.currentIteration + 1;
-    const remaining = config.maxIterations - iteration;
-    const elapsed = Math.round((Date.now() - config.startedAt) / 1000 / 60);
+    const elapsed = Math.round((Date.now() - this.config.startedAt) / 1000 / 60);
+    const remaining = this.config.maxIterations - iteration;
 
-    const message = `🔄 Loop iteration ${iteration}/${config.maxIterations}\n⏱️ Elapsed: ${elapsed} minutes\n📊 Remaining: ${remaining} iterations`;
+    const message =
+      `🔄 Loop iteration ${iteration}/${this.config.maxIterations} starting...\n` +
+      `⏱️ Elapsed: ${elapsed} min | 📊 Remaining: ${remaining}`;
 
     await this.bot.api.sendMessage(this.chatId, message).catch((err) => {
-      logger.error("[LoopManager] Failed to send status message:", err);
+      logger.error("[LoopManager] Failed to send iteration start message:", err);
     });
   }
 
@@ -252,6 +323,7 @@ class LoopManager {
     this.bot = null;
     this.chatId = null;
     this.ensureEventSubscription = null;
+    this.iterationHistory = [];
   }
 }
 

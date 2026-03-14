@@ -129,7 +129,9 @@ const toolMessageBatcher = new ToolMessageBatcher({
         disable_notification: true,
       });
     } finally {
-      await fs.unlink(tempFilePath).catch(() => {});
+      await fs.unlink(tempFilePath).catch((err) => {
+        logger.debug("[Bot] Failed to cleanup temp file:", err);
+      });
     }
   },
 });
@@ -286,7 +288,9 @@ async function ensureEventSubscription(directory: string): Promise<void> {
 
       const previousMessageIds = questionManager.getMessageIds();
       for (const messageId of previousMessageIds) {
-        await botInstance.api.deleteMessage(chatIdInstance, messageId).catch(() => {});
+        await botInstance.api.deleteMessage(chatIdInstance, messageId).catch((err) => {
+          logger.debug("[Bot] Failed to delete question message:", err);
+        });
       }
 
       clearAllInteractionState("question_replaced_by_new_poll");
@@ -569,7 +573,12 @@ export function createBot(): Bot<Context> {
   bot.command("abort", abortCommand);
   bot.command("rename", renameCommand);
   bot.command("commands", commandsCommand);
-  bot.command("loop", loopCommand);
+  bot.command("loop", async (ctx) => {
+    botInstance = bot;
+    chatIdInstance = ctx.chat.id;
+    loopManager.initialize(bot, ctx.chat.id, ensureEventSubscription);
+    await loopCommand(ctx);
+  });
   bot.command("stop_loop", stopLoopCommand);
   bot.command("loop_status", loopStatusCommand);
 
@@ -620,7 +629,9 @@ export function createBot(): Bot<Context> {
     } catch (err) {
       logger.error("[Bot] Error handling callback:", err);
       clearAllInteractionState("callback_handler_error");
-      await ctx.answerCallbackQuery({ text: t("callback.processing_error") }).catch(() => {});
+      await ctx.answerCallbackQuery({ text: t("callback.processing_error") }).catch((err) => {
+        logger.debug("[Bot] Failed to answer callback query:", err);
+      });
     }
   });
 
