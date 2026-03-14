@@ -33,6 +33,8 @@ export interface LoopStatus {
 const DEFAULT_MAX_ITERATIONS = 100;
 const DEFAULT_DELAY_MS = 10_000;
 const MAX_HISTORY = 10;
+const MAX_CONSECUTIVE_ERRORS = 5;
+const ERROR_RETRY_DELAY_MS = 30_000;
 
 class LoopManager {
   private config: LoopConfig | null = null;
@@ -43,6 +45,8 @@ class LoopManager {
   private currentSessionId: string | null = null;
   private isProcessing: boolean = false;
   private iterationHistory: IterationRecord[] = [];
+  private consecutiveErrors: number = 0;
+  private lastIdleIteration: number = -1;
 
   initialize(
     bot: Bot,
@@ -62,6 +66,7 @@ class LoopManager {
     this.iterationHistory = [];
     this.currentSessionId = null;
     this.isProcessing = false;
+    this.consecutiveErrors = 0;
 
     this.config = {
       prompt,
@@ -89,6 +94,7 @@ class LoopManager {
     this.config = null;
     this.currentSessionId = null;
     this.isProcessing = false;
+    this.consecutiveErrors = 0;
 
     if (previousConfig) {
       logger.info(`[LoopManager] Stopped loop after ${previousConfig.currentIteration} iterations`);
@@ -132,13 +138,46 @@ class LoopManager {
     await this.executeNextIteration();
   }
 
+  /**
+   * Called when a session error occurs (e.g. Authentication Failed).
+   * Uses retry logic instead of immediately stopping.
+   */
+  async onSessionError(sessionId: string, message: string): Promise<void> {
+    if (!this.config?.isActive) {
+      return;
+    }
+
+    // Only handle errors for the current loop session
+    if (sessionId !== this.currentSessionId) {
+      return;
+    }
+
+    logger.warn(`[LoopManager] Session error during loop: ${message}`);
+
+    // Prevent onSessionIdle from also scheduling a next iteration
+    this.lastIdleIteration = this.config.currentIteration;
+
+    this.isProcessing = false;
+
+    await this.scheduleRetryOrStop(`Session error: ${message}`);
+  }
+
   async onSessionIdle(): Promise<void> {
     if (!this.config?.isActive) {
       return;
     }
 
+    // Guard against double-fire: session.error + session.idle both trigger this
+    const iterationKey = this.config.currentIteration;
+    if (iterationKey === this.lastIdleIteration) {
+      logger.debug(`[LoopManager] Ignoring duplicate idle for iteration ${iterationKey}`);
+      return;
+    }
+    this.lastIdleIteration = iterationKey;
+
     // Mark current iteration as completed
     this.isProcessing = false;
+    this.consecutiveErrors = 0;
     if (this.iterationHistory.length > 0) {
       const lastRecord = this.iterationHistory[this.iterationHistory.length - 1];
       if (!lastRecord.completedAt) {
@@ -194,8 +233,7 @@ class LoopManager {
 
       if (error || !session) {
         logger.error("[LoopManager] Failed to create session:", error);
-        await this.sendErrorMessage("Failed to create new session");
-        this.stop();
+        await this.scheduleRetryOrStop("Failed to create new session");
         return;
       }
 
@@ -262,16 +300,59 @@ class LoopManager {
 
       if (promptError) {
         logger.error("[LoopManager] Failed to send prompt:", promptError);
-        await this.sendErrorMessage("Failed to send prompt");
-        this.stop();
+        await this.scheduleRetryOrStop("Failed to send prompt");
         return;
       }
 
+      // Prompt sent successfully, reset consecutive error count
+      this.consecutiveErrors = 0;
       logger.info(`[LoopManager] Prompt sent successfully for iteration ${iterationNumber}`);
     } catch (err) {
       logger.error("[LoopManager] Unexpected error in iteration:", err);
-      await this.sendErrorMessage("Unexpected error occurred");
+      await this.scheduleRetryOrStop("Unexpected error occurred");
+    }
+  }
+
+  /**
+   * On transient errors, schedule a retry instead of stopping the loop.
+   * Only stop if MAX_CONSECUTIVE_ERRORS is exceeded.
+   */
+  private async scheduleRetryOrStop(errorText: string): Promise<void> {
+    this.consecutiveErrors++;
+    this.isProcessing = false;
+
+    if (this.consecutiveErrors >= MAX_CONSECUTIVE_ERRORS) {
+      logger.error(
+        `[LoopManager] ${this.consecutiveErrors} consecutive errors, stopping loop`,
+      );
+      await this.sendErrorMessage(
+        `${errorText} (${this.consecutiveErrors} consecutive failures, loop stopped)`,
+      );
       this.stop();
+      return;
+    }
+
+    logger.warn(
+      `[LoopManager] Error (${this.consecutiveErrors}/${MAX_CONSECUTIVE_ERRORS}): ${errorText}, retrying in ${ERROR_RETRY_DELAY_MS / 1000}s`,
+    );
+
+    if (this.bot && this.chatId) {
+      await this.bot.api
+        .sendMessage(
+          this.chatId,
+          `⚠️ Loop error: ${errorText}\n🔄 Retrying in ${ERROR_RETRY_DELAY_MS / 1000}s... (${this.consecutiveErrors}/${MAX_CONSECUTIVE_ERRORS} errors)`,
+        )
+        .catch((err) => {
+          logger.error("[LoopManager] Failed to send retry message:", err);
+        });
+    }
+
+    if (this.config?.isActive) {
+      this.timeoutId = setTimeout(() => {
+        this.executeNextIteration().catch((err) => {
+          logger.error("[LoopManager] Error in retry iteration:", err);
+        });
+      }, ERROR_RETRY_DELAY_MS);
     }
   }
 

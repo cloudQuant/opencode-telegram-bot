@@ -772,6 +772,16 @@ class SummaryAggregator {
     logger.warn(`[Aggregator] Session error: ${sessionID}: ${message}`);
     this.stopTypingIndicator();
 
+    // Notify loop manager about the error before the generic callback,
+    // so it can prevent onSessionIdle from double-scheduling
+    if (loopManager.isActive()) {
+      setImmediate(() => {
+        loopManager.onSessionError(sessionID, message).catch((err) => {
+          logger.error("[Aggregator] Error in loop onSessionError:", err);
+        });
+      });
+    }
+
     if (this.onSessionErrorCallback) {
       const callback = this.onSessionErrorCallback;
       setImmediate(() => {
