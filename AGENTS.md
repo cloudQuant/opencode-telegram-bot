@@ -2,215 +2,197 @@
 
 Instructions for AI agents working on this project.
 
-## About the project
+## Project Overview
 
 **opencode-telegram-bot** is a Telegram bot that acts as a mobile client for OpenCode.
-It lets a user run and monitor coding tasks on a local machine through Telegram.
+Functional requirements and development status are in [PRODUCT.md](./PRODUCT.md).
 
-Functional requirements, features, and development status are in [PRODUCT.md](./PRODUCT.md).
+## Technology Stack
 
-## Technology stack
+- **Language:** TypeScript 5.x (strict mode, ES2022 target)
+- **Runtime:** Node.js 20+ | **Module:** ESM (`"type": "module"`)
+- **Package manager:** npm | **Test:** Vitest | **Lint:** ESLint + Prettier
 
-- **Language:** TypeScript 5.x
-- **Runtime:** Node.js 20+
-- **Package manager:** npm
-- **Configuration:** environment variables (`.env`)
-- **Logging:** custom logger with levels (`debug`, `info`, `warn`, `error`)
+### Core Dependencies
 
-### Core dependencies
+`grammy` (Telegram Bot), `@grammyjs/menu`, `@opencode-ai/sdk`, `dotenv`
 
-- `grammy` - Telegram Bot API framework (https://grammy.dev/)
-- `@grammyjs/menu` - inline keyboards and menus
-- `@opencode-ai/sdk` - official OpenCode Server SDK
-- `dotenv` - environment variable loading
+## Build / Lint / Test Commands
 
-### Test dependencies
+```bash
+npm run build          # Compile TypeScript (tsc)
+npm run lint           # ESLint check (--max-warnings=0)
+npm run format         # Prettier --write
+npm test               # Run all tests (vitest run)
+npm run test:coverage  # Tests with coverage
 
-- Vitest
-- Mocks/stubs via `vi.mock()`
+# Run a single test file
+npx vitest run tests/session/cache-manager.test.ts
 
-### Code quality
+# Run tests matching a pattern
+npx vitest run -t "warms up cache"
 
-- ESLint + Prettier
-- TypeScript strict mode
-
-## Architecture
-
-### Main components
-
-1. **Bot Layer** - grammY setup, middleware, commands, callback handlers
-2. **OpenCode Client Layer** - SDK wrapper and SSE event subscription
-3. **State Managers** - session/project/settings/question/permission/model/agent/variant/keyboard/pinned
-4. **Summary Pipeline** - event aggregation and Telegram-friendly formatting
-5. **Process Manager** - local OpenCode server process start, stop, and status
-6. **Runtime/CLI Layer** - runtime mode, config bootstrap, CLI commands
-7. **I18n Layer** - localized bot and CLI strings to multiple languages
-
-### Data flow
-
-```text
-Telegram User
-  -> Telegram Bot (grammY)
-  -> Managers + OpenCodeClient
-  -> OpenCode Server
-
-OpenCode Server
-  -> SSE Events
-  -> Event Listener
-  -> Summary Aggregator / Tool Managers
-  -> Telegram Bot
-  -> Telegram User
+# Watch mode for development
+npx vitest watch tests/session/
 ```
 
-### State management
+## Code Style Guidelines
 
-- Persistent state is stored in `settings.json`.
-- Active runtime state is kept in dedicated in-memory managers.
-- Session/project/model/agent context is synchronized through OpenCode API calls.
-- The app is currently single-user by design.
+### Formatting (Prettier)
 
-## AI agent behavior rules
+```json
+{ "semi": true, "trailingComma": "all", "singleQuote": false, "printWidth": 100, "tabWidth": 2 }
+```
 
-### Communication
+### Imports
 
-- **Response language:** Reply in the same language the user uses in their questions.
-- **Clarifications:** If plan confirmation is needed, use the `question` tool. Do not make major decisions (architecture changes, mass deletion, risky changes) without explicit confirmation.
+- **Always use `.js` extensions** in import paths for ESM compatibility:
+  ```typescript
+  import { logger } from "../utils/logger.js"; // Correct
+  import { logger } from "../utils/logger"; // Wrong
+  ```
+- Node.js built-ins use `node:` prefix: `import path from "node:path";`
+- Group imports: external packages first, then internal modules
 
-### Git
+### TypeScript
 
-- **Commits:** Never create commits automatically. Commit only when the user explicitly asks.
+- Strict mode enabled - no `any` without justification (ESLint warns)
+- Prefer explicit return types for exported functions
+- Use `type` for type aliases, `interface` for object shapes
+- Unused parameters prefixed with `_` to satisfy linter
 
-### Windows / PowerShell
+### Naming Conventions
 
-- Keep in mind the runtime environment is Windows.
-- Avoid fragile one-liners that can break in PowerShell.
-- Use absolute paths when working with file tools (`read`, `write`, `edit`).
+| Type                | Convention           | Examples                                 |
+| ------------------- | -------------------- | ---------------------------------------- |
+| Files               | kebab-case           | `session-manager.ts`, `cache-manager.ts` |
+| Functions/variables | camelCase            | `getCurrentSession`, `sessionListMock`   |
+| Types/interfaces    | PascalCase           | `SessionInfo`, `BotCommandDefinition`    |
+| Constants           | SCREAMING_SNAKE_CASE | `LOG_LEVELS`                             |
 
-## Coding rules
-
-### Language
-
-- Code, identifiers, comments, and in-code documentation must be in English.
-- User-facing Telegram messages should be localized through i18n.
-
-### Code style
-
-- Use TypeScript strict mode.
-- Use ESLint + Prettier.
-- Prefer `const` over `let`.
-- Use clear names and avoid unnecessary abbreviations.
-- Keep functions small and focused.
-- Prefer `async/await` over chained `.then()`.
-
-### Error handling
-
-- Use `try/catch` around async operations.
-- Log errors with context (session ID, operation type, etc.).
-- Send understandable error messages to users.
-- Never expose stack traces to users.
-
-### Bot commands
-
-The command list is centralized in `src/bot/commands/definitions.ts`.
+### Error Handling
 
 ```typescript
-const COMMAND_DEFINITIONS: BotCommandI18nDefinition[] = [
-  { command: "status", descriptionKey: "cmd.description.status" },
-  { command: "new", descriptionKey: "cmd.description.new" },
-  { command: "abort", descriptionKey: "cmd.description.stop" },
-  { command: "sessions", descriptionKey: "cmd.description.sessions" },
-  { command: "projects", descriptionKey: "cmd.description.projects" },
-  { command: "rename", descriptionKey: "cmd.description.rename" },
-  { command: "opencode_start", descriptionKey: "cmd.description.opencode_start" },
-  { command: "opencode_stop", descriptionKey: "cmd.description.opencode_stop" },
-  { command: "help", descriptionKey: "cmd.description.help" },
-];
+try {
+  const result = await client.session.list();
+  if (result.error) {
+    logger.error("[SessionManager] Failed to list sessions", result.error);
+    return null;
+  }
+  return result.data;
+} catch (error) {
+  logger.error("[SessionManager] Unexpected error", error);
+  throw error;
+}
 ```
 
-Important:
-
-- When adding a command, update `definitions.ts` only.
-- The same source is used for Telegram `setMyCommands` and help/docs.
-- Do not duplicate command lists elsewhere.
+- Log errors with context (component name, operation type)
+- Never expose stack traces to users; use i18n for user messages
 
 ### Logging
 
-The project uses `src/utils/logger.ts` with level-based logging.
-
-Levels:
-
-- **DEBUG** - detailed diagnostics (callbacks, keyboard build, SSE internals, polling flow)
-- **INFO** - key lifecycle events (session/task start/finish, status changes)
-- **WARN** - recoverable issues (timeouts, retries, unauthorized attempts)
-- **ERROR** - critical failures requiring attention
-
-Use:
+Use `src/utils/logger.ts` - never raw `console.log`:
 
 ```typescript
 import { logger } from "../utils/logger.js";
 
-logger.debug("[Component] Detailed operation", details);
-logger.info("[Component] Important event occurred");
-logger.warn("[Component] Recoverable problem", error);
+logger.debug("[Component] Detailed diagnostics", { detail });
+logger.info("[Component] Important lifecycle event");
+logger.warn("[Component] Recoverable issue", error);
 logger.error("[Component] Critical failure", error);
 ```
 
-Important:
+Levels: `debug` (diagnostics) < `info` (events) < `warn` (recoverable) < `error` (critical)
 
-- Do not use raw `console.log` / `console.error` directly in feature code; use `logger`.
-- Put internal diagnostics under `debug`.
-- Keep important operational events under `info`.
-- Default level is `info`.
+## Architecture
+
+### Main Components
+
+1. **Bot Layer** - grammY setup, middleware, commands (`src/bot/`)
+2. **OpenCode Client** - SDK wrapper, SSE events (`src/opencode/`)
+3. **State Managers** - session/project/model/agent/variant (`src/*/manager.ts`)
+4. **Summary Pipeline** - event aggregation, formatting (`src/summary/`)
+5. **Process Manager** - OpenCode server control (`src/process/`)
+6. **Runtime/CLI** - mode detection, bootstrap (`src/runtime/`, `src/cli/`)
+7. **I18n** - localization (`src/i18n/`)
+
+### State Management
+
+- Persistent: `settings.json` (via `src/settings/manager.ts`)
+- Runtime: in-memory managers (singletons)
+- Multi-instance support via `OPENCODE_TELEGRAM_HOME` environment variable
+
+### Multiple Bot Instances
+
+The bot supports running multiple independent instances, each with its own:
+
+- Telegram bot token (different bots)
+- Project selection
+- Session management
+- Settings persistence
+
+Each instance uses a separate configuration directory:
+
+```
+config/
+├── bot_work/
+│   ├── .env           # Bot token, user ID, model config
+│   ├── settings.json  # Project, session, agent state
+│   ├── bot.pid        # Running process ID
+│   └── bot.log        # Log output
+└── bot_personal/
+    └── ...
+```
+
+Set `OPENCODE_TELEGRAM_HOME` to the config directory path before starting.
+
+### Management Scripts
+
+```cmd
+create_bot.bat <name>   # Create new bot config directory
+start_bot.bat <name>    # Start a bot instance
+stop_bot.bat <name>     # Stop a bot instance
+list_bots.bat           # List all bots and their status
+restart_bot.bat <name>  # Restart a bot instance
+```
+
+### Bot Commands
+
+Centralized in `src/bot/commands/definitions.ts`. Add new commands to `COMMAND_DEFINITIONS` array only.
 
 ## Testing
 
-### What to test
-
-- Unit tests for business logic, formatters, managers, runtime helpers
-- Integration-style tests around OpenCode SDK interaction using mocks
-- Focus on critical paths; avoid over-testing trivial code
-
-### Test structure
-
-- Tests live in `tests/` (organized by module)
-- Use descriptive test names
-- Follow Arrange-Act-Assert
+- Tests in `tests/` (mirrors `src/` structure)
+- Setup: `tests/setup.ts` (resets singletons, restores mocks)
 - Use `vi.mock()` for external dependencies
 
-## OpenCode SDK quick reference
-
 ```typescript
-import { createOpencodeClient } from "@opencode-ai/sdk";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const client = createOpencodeClient({ baseUrl: "http://localhost:4096" });
+vi.mock("../../src/utils/logger.js", () => ({
+  logger: { debug: vi.fn(), info: vi.fn(), warn: vi.fn(), error: vi.fn() },
+}));
 
-await client.global.health();
-
-await client.project.list();
-await client.project.current();
-
-await client.session.list();
-await client.session.create({ body: { title: "My session" } });
-await client.session.prompt({
-  path: { id: "session-id" },
-  body: { parts: [{ type: "text", text: "Implement feature X" }] },
+describe("module", () => {
+  beforeEach(() => vi.clearAllMocks());
+  it("does something", () => {
+    /* Arrange, Act, Assert */
+  });
 });
-await client.session.abort({ path: { id: "session-id" } });
-
-const events = await client.event.subscribe();
-for await (const event of events.stream) {
-  // handle SSE event
-}
 ```
 
-Full docs: https://opencode.ai/docs/sdk
+## AI Agent Rules
 
-## Workflow
+- Reply in the same language as the user's question
+- Use `question` tool for plan confirmations
+- Never make major decisions (architecture, mass deletion) without explicit confirmation
+- Never commit automatically - only when explicitly asked
+- Runtime is Windows - avoid fragile PowerShell one-liners; use absolute paths with file tools
 
-1. Read [PRODUCT.md](./PRODUCT.md) to understand scope and status.
-2. Inspect existing code before adding or changing components.
-3. Align major architecture changes (including new dependencies) with the user first.
-4. Add or update tests for new functionality.
-5. After code changes, run quality checks: `npm run build`, `npm run lint`, and `npm test`.
-6. Update checkboxes in `PRODUCT.md` when relevant tasks are completed.
-7. Keep code clean, consistent, and maintainable.
+### Workflow
+
+1. Read [PRODUCT.md](./PRODUCT.md) for scope/status
+2. Inspect existing code before changes
+3. Add/update tests for new functionality
+4. Run: `npm run build && npm run lint && npm test`
+5. Update PRODUCT.md checkboxes when tasks complete

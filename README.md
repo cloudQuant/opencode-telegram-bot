@@ -134,13 +134,13 @@ When installed via npm, the configuration wizard handles the initial setup. The 
 | Variable                        | Description                                                                                                  | Required | Default                  |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------ | :------: | ------------------------ |
 | `TELEGRAM_BOT_TOKEN`            | Bot token from @BotFather                                                                                    |   Yes    | —                        |
-| `TELEGRAM_ALLOWED_USER_ID`      | Your numeric Telegram user ID                                                                                |   Yes    | —                        |
+| `TELEGRAM_ALLOWED_USER_IDS`     | Comma-separated list of allowed Telegram user IDs (single or multiple users)                                 |   Yes    | —                        |
 | `TELEGRAM_PROXY_URL`            | Proxy URL for Telegram API (SOCKS5/HTTP)                                                                     |    No    | —                        |
 | `OPENCODE_API_URL`              | OpenCode server URL                                                                                          |    No    | `http://localhost:4096`  |
 | `OPENCODE_SERVER_USERNAME`      | Server auth username                                                                                         |    No    | `opencode`               |
 | `OPENCODE_SERVER_PASSWORD`      | Server auth password                                                                                         |    No    | —                        |
-| `OPENCODE_MODEL_PROVIDER`       | Default model provider                                                                                       |   Yes    | `opencode`               |
-| `OPENCODE_MODEL_ID`             | Default model ID                                                                                             |   Yes    | `big-pickle`             |
+| `OPENCODE_MODEL_PROVIDER`       | Default model provider                                                                                       |   Yes    | `zai-coding-plan`        |
+| `OPENCODE_MODEL_ID`             | Default model ID                                                                                             |   Yes    | `glm-5`                  |
 | `BOT_LOCALE`                    | Bot UI language (supported locale code, e.g. `en`, `de`, `es`, `ru`, `zh`)                                   |    No    | `en`                     |
 | `SESSIONS_LIST_LIMIT`           | Sessions per page in `/sessions`                                                                             |    No    | `10`                     |
 | `PROJECTS_LIST_LIMIT`           | Projects per page in `/projects`                                                                             |    No    | `10`                     |
@@ -193,7 +193,7 @@ To add a model to favorites, open OpenCode TUI (`opencode`), go to model selecti
 
 ## Security
 
-The bot enforces a strict **user ID whitelist**. Only the Telegram user whose numeric ID matches `TELEGRAM_ALLOWED_USER_ID` can interact with the bot. Messages from any other user are silently ignored and logged as unauthorized access attempts.
+The bot enforces a strict **user ID whitelist**. Only Telegram users whose numeric IDs are listed in `TELEGRAM_ALLOWED_USER_IDS` can interact with the bot. Messages from any other user are silently ignored and logged as unauthorized access attempts.
 
 Since the bot runs locally on your machine and connects to your local OpenCode server, there is no external attack surface beyond the Telegram Bot API itself.
 
@@ -215,6 +215,104 @@ Build and run:
 npm run dev
 ```
 
+### Multiple Bot Instances (Windows)
+
+You can run multiple bot instances simultaneously, each with its own project and settings. This is useful if you want separate bots for different projects.
+
+**Unified Management Tool:**
+
+```cmd
+bots.bat <action> [name]
+```
+
+**Actions:**
+
+| Action           | Description                                   |
+| ---------------- | --------------------------------------------- |
+| `list`, `ls`     | List all bots and their status                |
+| `create <name>`  | Create a new bot configuration                |
+| `start <name>`   | Start a bot instance                          |
+| `stop <name>`    | Stop a bot instance                           |
+| `restart <name>` | Restart a bot instance                        |
+| `delete <name>`  | Delete a bot configuration (stops if running) |
+| `edit <name>`    | Open bot config in notepad                    |
+| `logs <name>`    | Show bot log output (last 50 lines)           |
+| `status <name>`  | Show bot status                               |
+
+**Usage:**
+
+```cmd
+# List all bots
+bots.bat list
+
+# Create a new bot
+bots.bat create work
+notepad config\bot_work\.env
+
+# Start the bot
+bots.bat start work
+
+# Check status
+bots.bat status work
+
+# View logs
+bots.bat logs work
+
+# Stop the bot
+bots.bat stop work
+
+# Delete a bot
+bots.bat delete work
+```
+
+**Directory Structure:**
+
+```
+config/
+├── bot_work/           # Work bot
+│   ├── .env            # Bot token, user ID, model config
+│   ├── settings.json   # Project, session, agent state
+│   ├── bot.pid         # Running process ID
+│   └── bot.log         # Log output
+├── bot_personal/       # Personal bot
+│   └── ...
+└── bot_test/           # Test bot
+    └── ...
+```
+
+Each bot's `.env` file needs:
+
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+TELEGRAM_ALLOWED_USER_ID=your_telegram_user_id
+OPENCODE_MODEL_PROVIDER=zai-coding-plan
+OPENCODE_MODEL_ID=glm-5
+```
+
+**Directory Structure:**
+
+```
+config/
+├── bot_work/           # Work bot
+│   ├── .env            # Bot token, user ID, model config
+│   ├── settings.json   # Project, session, agent state
+│   ├── bot.pid         # Running process ID
+│   └── bot.log         # Log output
+├── bot_personal/       # Personal bot
+│   └── ...
+└── bot_test/           # Test bot
+    └── ...
+```
+
+Each bot's `.env` file needs:
+
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+TELEGRAM_ALLOWED_USER_ID=your_telegram_user_id
+OPENCODE_MODEL_PROVIDER=zai-coding-plan
+OPENCODE_MODEL_ID=glm-5
+```
+
 ### Available Scripts
 
 | Script                          | Description                          |
@@ -234,7 +332,7 @@ npm run dev
 
 **Bot doesn't respond to messages**
 
-- Make sure `TELEGRAM_ALLOWED_USER_ID` matches your actual Telegram user ID (check with [@userinfobot](https://t.me/userinfobot))
+- Make sure `TELEGRAM_ALLOWED_USER_IDS` includes your actual Telegram user ID (check with [@userinfobot](https://t.me/userinfobot))
 - Verify the bot token is correct
 
 **"OpenCode server is not available"**

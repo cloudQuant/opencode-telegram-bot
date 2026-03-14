@@ -1,0 +1,229 @@
+[2026-03-14T03:37:57.399Z] [INFO] Starting OpenCode Telegram Bot v0.11.2...
+[2026-03-14T03:37:57.400Z] [INFO] Config loaded from D:\source_code\opencode-telegram-bot\config\bot_bt_api_py\.env
+[2026-03-14T03:37:57.400Z] [INFO] Allowed User ID: 6415939666
+[2026-03-14T03:37:58.637Z] [INFO] Bot @bt_api_py_bot started!
+[2026-03-14T04:09:56.331Z] [INFO] Starting OpenCode Telegram Bot v0.11.2...
+[2026-03-14T04:09:56.332Z] [INFO] Config loaded from D:\source_code\opencode-telegram-bot\config\bot_bt_api_py\.env
+[2026-03-14T04:09:56.332Z] [INFO] Allowed User ID: 6415939666
+[2026-03-14T04:09:57.429Z] [INFO] Bot @bt_api_py_bot started!
+[2026-03-14T04:10:39.390Z] [INFO] Event listener stopped
+[2026-03-14T04:10:39.760Z] [INFO] [PinnedManager] Cleared pinned message state
+[2026-03-14T07:28:53.854Z] [INFO] [InteractionManager] Started interaction: kind=inline, expectedInput=callback, allowedCommands=/help,/status,/abort
+[2026-03-14T07:28:58.512Z] [INFO] [Bot] Project selected: D:\new_projects\akshare_web (id: ab89fe441e155056e7840ff209c01beaee47f156)
+[2026-03-14T07:28:58.513Z] [INFO] [InteractionManager] Cleared interaction: reason=project_switched, kind=inline, expectedInput=callback
+[2026-03-14T07:28:58.513Z] [INFO] [InteractionCleanup] Cleared state: reason=project_switched, questionActive=false, permissionActive=false, renameActive=false, interactionKind=inline
+[2026-03-14T07:28:58.798Z] [INFO] [PinnedManager] Cleared pinned message state
+[2026-03-14T07:29:07.104Z] [INFO] [Bot] Created new session: id=ses_314c049e4ffeGIYePN6l8kxivo, title="New session - 2026-03-14T07:29:07.099Z", project=D:\new_projects\akshare_web
+[2026-03-14T07:29:07.106Z] [INFO] [PinnedManager] Session changed: ses_314c049e4ffeGIYePN6l8kxivo, title: New session - 2026-03-14T07:29:07.099Z
+[2026-03-14T07:29:07.993Z] [INFO] [PinnedManager] Created and pinned message: 11
+[2026-03-14T07:29:08.300Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\akshare_web
+[2026-03-14T07:29:08.303Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T07:29:08.480Z] [WARN] Unauthorized access attempt from user ID: 8677933654
+[2026-03-14T07:34:11.356Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_314c049e4ffeGIYePN6l8kxivo',
+  directory: 'D:\\new_projects\\akshare_web',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 55,
+  fileCount: 0
+}
+[2026-03-14T07:34:11.358Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T07:34:11.358Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T07:39:35.494Z] [INFO] [Aggregator] Session became idle: ses_314c049e4ffeGIYePN6l8kxivo
+[2026-03-14T07:39:35.665Z] [WARN] [Bot] Markdown parse failed, retrying assistant message in raw mode GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Character '|' is reserved and must be escaped with the preceding '\')
+    at toGrammyError (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async sendMessageWithMarkdownFallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/utils/send-with-markdown-fallback.js:49:9)
+    at async SummaryAggregator.onCompleteCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:159:17)
+[2026-03-14T07:46:02.671Z] [INFO] [Bot] Using existing session: id=ses_314c049e4ffeGIYePN6l8kxivo, title="New session - 2026-03-14T07:29:07.099Z"
+[2026-03-14T07:46:02.671Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\akshare_web
+[2026-03-14T07:46:03.037Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T07:51:06.154Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_314c049e4ffeGIYePN6l8kxivo',
+  directory: 'D:\\new_projects\\akshare_web',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 2,
+  fileCount: 0
+}
+[2026-03-14T07:51:06.154Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T07:51:06.154Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T08:06:46.230Z] [INFO] [Aggregator] Session became idle: ses_314c049e4ffeGIYePN6l8kxivo
+[2026-03-14T08:25:55.356Z] [INFO] [Bot] Created new session via /new command: id=ses_3148c4868ffeeSKRPTpu6y7Sqt, title="New session - 2026-03-14T08:25:55.351Z", project=D:\new_projects\akshare_web
+[2026-03-14T08:25:55.356Z] [INFO] [PinnedManager] Session changed: ses_3148c4868ffeeSKRPTpu6y7Sqt, title: New session - 2026-03-14T08:25:55.351Z
+[2026-03-14T08:26:00.875Z] [INFO] [PinnedManager] Created and pinned message: 130
+[2026-03-14T08:26:15.203Z] [WARN] Unauthorized access attempt from user ID: 8677933654
+[2026-03-14T08:27:32.341Z] [INFO] [Bot] Using existing session: id=ses_3148c4868ffeeSKRPTpu6y7Sqt, title="New session - 2026-03-14T08:25:55.351Z"
+[2026-03-14T08:27:32.341Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\akshare_web
+[2026-03-14T08:27:36.822Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T08:32:39.926Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_3148c4868ffeeSKRPTpu6y7Sqt',
+  directory: 'D:\\new_projects\\akshare_web',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 55,
+  fileCount: 0
+}
+[2026-03-14T08:32:39.926Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T08:32:39.926Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T08:38:29.290Z] [WARN] [Aggregator] Session retry: session=ses_3148c4868ffeeSKRPTpu6y7Sqt, attempt=1, message=Rate limit reached for requests
+[2026-03-14T09:29:53.671Z] [WARN] [Aggregator] Session error: ses_3148c4868ffeeSKRPTpu6y7Sqt: Invalid API parameter, please check the documentation.Requested token count exceeds the model's maximum context length of 202752 tokens. You requested a total of 441584 tokens: 409584 tokens from the input messages and 32000 tokens for the completion. Please reduce the number of tokens in the input messages or the completion to fit within the limit.
+[2026-03-14T09:29:53.682Z] [INFO] [Aggregator] Session became idle: ses_3148c4868ffeeSKRPTpu6y7Sqt
+[2026-03-14T09:29:53.710Z] [INFO] [Aggregator] Session became idle: ses_3148c4868ffeeSKRPTpu6y7Sqt
+[2026-03-14T09:31:37.835Z] [INFO] [InteractionManager] Started interaction: kind=inline, expectedInput=callback, allowedCommands=/help,/status,/abort
+[2026-03-14T09:31:53.426Z] [WARN] [Aggregator] Session error: ses_3148c4868ffeeSKRPTpu6y7Sqt: Invalid API parameter, please check the documentation.Requested token count exceeds the model's maximum context length of 202752 tokens. You requested a total of 406998 tokens: 374998 tokens from the input messages and 32000 tokens for the completion. Please reduce the number of tokens in the input messages or the completion to fit within the limit.
+[2026-03-14T09:31:53.436Z] [INFO] [Aggregator] Session became idle: ses_3148c4868ffeeSKRPTpu6y7Sqt
+[2026-03-14T09:31:53.440Z] [INFO] [Aggregator] Session became idle: ses_3148c4868ffeeSKRPTpu6y7Sqt
+[2026-03-14T09:35:54.803Z] [INFO] [Bot] Project selected: D:\new_projects\akshare_web (id: ab89fe441e155056e7840ff209c01beaee47f156)
+[2026-03-14T09:35:54.803Z] [INFO] [InteractionManager] Cleared interaction: reason=project_switched, kind=inline, expectedInput=callback
+[2026-03-14T09:35:54.803Z] [INFO] [InteractionCleanup] Cleared state: reason=project_switched, questionActive=false, permissionActive=false, renameActive=false, interactionKind=inline
+[2026-03-14T09:35:55.269Z] [INFO] [PinnedManager] Cleared pinned message state
+[2026-03-14T09:36:14.844Z] [ERROR] [Bot] Error selecting project: GrammyError: Call to 'answerCallbackQuery' failed! (400: Bad Request: query is too old and response timeout expired or query ID is invalid)
+    at toGrammyError (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async handleProjectSelect (file:///D:/source_code/opencode-telegram-bot/dist/bot/commands/projects.js:201:9)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:473:36
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+[2026-03-14T09:36:15.137Z] [ERROR] [Bot] Error handling callback: GrammyError: Call to 'answerCallbackQuery' failed! (400: Bad Request: query is too old and response timeout expired or query ID is invalid)
+    at toGrammyError (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async handleProjectSelect (file:///D:/source_code/opencode-telegram-bot/dist/bot/commands/projects.js:210:9)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:473:36
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+[2026-03-14T09:36:58.982Z] [INFO] [Bot] Created new session via /new command: id=ses_3144b399cffe2QaVO2PrUqbsYz, title="New session - 2026-03-14T09:36:58.979Z", project=D:\new_projects\akshare_web
+[2026-03-14T09:36:58.982Z] [INFO] [PinnedManager] Session changed: ses_3144b399cffe2QaVO2PrUqbsYz, title: New session - 2026-03-14T09:36:58.979Z
+[2026-03-14T09:38:01.585Z] [INFO] [PinnedManager] Created and pinned message: 164
+[2026-03-14T09:40:32.265Z] [INFO] Event listener stopped
+[2026-03-14T09:40:37.570Z] [WARN] [Abort] Abort request failed: AbortError: This operation was aborted
+    at node:internal/deps/undici/undici:16416:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+    at async abortCurrentOperation (file:///D:/source_code/opencode-telegram-bot/dist/bot/commands/abort.js:67:62)
+    at async abortCommand (file:///D:/source_code/opencode-telegram-bot/dist/bot/commands/abort.js:118:5)
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+[2026-03-14T09:40:37.864Z] [WARN] Unauthorized access attempt from user ID: 8677933654
+[2026-03-14T09:41:10.970Z] [INFO] Event listener stopped
+[2026-03-14T09:41:16.280Z] [WARN] [Abort] Abort request failed: AbortError: This operation was aborted
+    at node:internal/deps/undici/undici:16416:13
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+    at async abortCurrentOperation (file:///D:/source_code/opencode-telegram-bot/dist/bot/commands/abort.js:67:62)
+    at async abortCommand (file:///D:/source_code/opencode-telegram-bot/dist/bot/commands/abort.js:118:5)
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:62:13
+    at async D:\source_code\opencode-telegram-bot\node_modules\grammy\out\composer.js:578:13
+[2026-03-14T09:47:52.446Z] [INFO] [Bot] Using existing session: id=ses_3144b399cffe2QaVO2PrUqbsYz, title="New session - 2026-03-14T09:36:58.979Z"
+[2026-03-14T09:47:52.446Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\akshare_web
+[2026-03-14T09:48:51.176Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T09:49:22.123Z] [INFO] [Bot] Created new session via /new command: id=ses_3143fe2b5ffeiGgSvl8PoBvfMa, title="New session - 2026-03-14T09:49:22.122Z", project=D:\new_projects\akshare_web
+[2026-03-14T09:49:22.123Z] [INFO] [PinnedManager] Session changed: ses_3143fe2b5ffeiGgSvl8PoBvfMa, title: New session - 2026-03-14T09:49:22.122Z
+[2026-03-14T09:50:37.489Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_3144b399cffe2QaVO2PrUqbsYz',
+  directory: 'D:\\new_projects\\akshare_web',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 2,
+  fileCount: 0
+}
+[2026-03-14T09:50:37.491Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T09:50:37.492Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T09:50:37.493Z] [WARN] [PinnedManager] Failed to fetch providers, using default limit
+[2026-03-14T09:50:38.870Z] [INFO] [PinnedManager] Created and pinned message: 175
+[2026-03-14T09:50:39.346Z] [WARN] Unauthorized access attempt from user ID: 8677933654
+[2026-03-14T09:51:34.838Z] [INFO] [Bot] Using existing session: id=ses_3143fe2b5ffeiGgSvl8PoBvfMa, title="New session - 2026-03-14T09:49:22.122Z"
+[2026-03-14T09:51:34.838Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\akshare_web
+[2026-03-14T09:51:34.843Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T09:56:37.779Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_3143fe2b5ffeiGgSvl8PoBvfMa',
+  directory: 'D:\\new_projects\\akshare_web',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 55,
+  fileCount: 0
+}
+[2026-03-14T09:56:37.779Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T09:56:37.779Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T10:00:40.572Z] [INFO] [Aggregator] Question event: question.asked {
+  "id": "que_cebca777d001zPD9gL7rYlE5l7",
+  "sessionID": "ses_3143fe2b5ffeiGgSvl8PoBvfMa",
+  "questions": [
+    {
+      "question": "您希望执行哪些改进？可以多选",
+      "header": "选择改进项",
+      "options": [
+        {
+          "label": "全部执行 (推荐)",
+          "description": "按优先级顺序执行所有改进项"
+        },
+        {
+          "label": "仅高优先级",
+          "description": "只修复 3 个高优先级问题 (数据库、错误处理)"
+        },
+        {
+          "label": "仅后端改进",
+          "description": "修复所有后端问题 (高+中优先级)"
+        },
+        {
+          "label": "仅前端改进",
+          "description": "只改进前端代码 (ARIA、类型定义)"
+        }
+      ],
+      "multiple": true
+    }
+  ],
+  "tool": {
+    "messageID": "msg_cebca2397001f9mI4Fcj0MgUGu",
+    "callID": "call_681f57f0ba8b4af8ab3b61d3"
+  }
+}
+[2026-03-14T10:00:40.573Z] [INFO] [Aggregator] Question asked: requestID=que_cebca777d001zPD9gL7rYlE5l7, questions=1
+[2026-03-14T10:00:40.573Z] [INFO] [Bot] Received 1 questions from agent, requestID=que_cebca777d001zPD9gL7rYlE5l7
+[2026-03-14T10:00:40.573Z] [INFO] [QuestionManager] Starting new poll with 1 questions, requestID=que_cebca777d001zPD9gL7rYlE5l7
+[2026-03-14T10:00:40.884Z] [INFO] [InteractionManager] Started interaction: kind=question, expectedInput=callback, allowedCommands=/help,/status,/abort

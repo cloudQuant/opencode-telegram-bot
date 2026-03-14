@@ -71,8 +71,41 @@ No public inbound ports are required for normal usage.
 
 ### Security
 
-- Whitelist by Telegram user ID (single-user mode)
+- Whitelist by Telegram user IDs (multi-user mode supported)
+- Comma-separated list of allowed user IDs
 - Ignore messages from non-authorized users
+- Each user has isolated project/session/model context
+
+### Multiple Bot Instances
+
+The bot supports running multiple instances simultaneously, each with its own:
+
+- Telegram bot token (different bots)
+- Project selection
+- Session management
+- Settings persistence
+
+Each instance uses a separate configuration directory:
+
+```
+config/
+├── bot_work/      # Work bot
+│   ├── .env
+│   └── settings.json
+├── bot_personal/  # Personal bot
+│   ├── .env
+│   └── settings.json
+└── bot_test/      # Test bot
+    ├── .env
+    └── settings.json
+```
+
+Management scripts:
+
+- `create_bot.bat <name>` - Create new bot config
+- `start_bot.bat <name>` - Start a bot
+- `stop_bot.bat <name>` - Stop a bot
+- `list_bots.bat` - List all bots
 
 ### Configuration
 

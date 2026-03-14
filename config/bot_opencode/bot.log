@@ -1,0 +1,665 @@
+[2026-03-14T04:10:01.962Z] [INFO] Starting OpenCode Telegram Bot v0.11.2...
+[2026-03-14T04:10:01.963Z] [INFO] Config loaded from D:\source_code\opencode-telegram-bot\config\bot_opencode\.env
+[2026-03-14T04:10:01.963Z] [INFO] Allowed User ID: 6415939666
+[2026-03-14T04:10:03.083Z] [INFO] Bot @opencode666_bot started!
+[2026-03-14T07:28:13.341Z] [INFO] [InteractionManager] Started interaction: kind=inline, expectedInput=callback, allowedCommands=/help,/status,/abort
+[2026-03-14T07:28:18.141Z] [INFO] [Bot] Project selected: D:\new_projects\cloudQuant (id: 9f299f5820c3ad93fad722c856238edc7181af47)
+[2026-03-14T07:28:18.142Z] [INFO] [InteractionManager] Cleared interaction: reason=project_switched, kind=inline, expectedInput=callback
+[2026-03-14T07:28:18.142Z] [INFO] [InteractionCleanup] Cleared state: reason=project_switched, questionActive=false, permissionActive=false, renameActive=false, interactionKind=inline
+[2026-03-14T07:28:42.133Z] [INFO] [Bot] Created new session: id=ses_314c0ab9dffe7iAqVkRFaE7G3T, title="New session - 2026-03-14T07:28:42.088Z", project=D:\new_projects\cloudQuant
+[2026-03-14T07:28:42.135Z] [INFO] [PinnedManager] Session changed: ses_314c0ab9dffe7iAqVkRFaE7G3T, title: New session - 2026-03-14T07:28:42.088Z
+[2026-03-14T07:28:43.163Z] [INFO] [PinnedManager] Created and pinned message: 416
+[2026-03-14T07:28:43.529Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\cloudQuant
+[2026-03-14T07:28:43.555Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T07:28:43.782Z] [WARN] Unauthorized access attempt from user ID: 8794378680
+[2026-03-14T07:33:46.547Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_314c0ab9dffe7iAqVkRFaE7G3T',
+  directory: 'D:\\new_projects\\cloudQuant',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 55,
+  fileCount: 0
+}
+[2026-03-14T07:33:46.548Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T07:33:46.548Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T07:42:39.732Z] [INFO] [Aggregator] Session became idle: ses_314c0ab9dffe7iAqVkRFaE7G3T
+[2026-03-14T07:45:34.111Z] [INFO] [Bot] Created new session via /new command: id=ses_314b13a5dffeun0XfdlVeqj7Tg, title="New session - 2026-03-14T07:45:34.114Z", project=D:\new_projects\cloudQuant
+[2026-03-14T07:45:34.111Z] [INFO] [PinnedManager] Session changed: ses_314b13a5dffeun0XfdlVeqj7Tg, title: New session - 2026-03-14T07:45:34.114Z
+[2026-03-14T07:45:35.406Z] [INFO] [PinnedManager] Created and pinned message: 491
+[2026-03-14T07:45:36.123Z] [WARN] Unauthorized access attempt from user ID: 8794378680
+[2026-03-14T07:45:43.038Z] [INFO] [Bot] Using existing session: id=ses_314b13a5dffeun0XfdlVeqj7Tg, title="New session - 2026-03-14T07:45:34.114Z"
+[2026-03-14T07:45:43.038Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\cloudQuant
+[2026-03-14T07:45:43.123Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T07:50:46.005Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_314b13a5dffeun0XfdlVeqj7Tg',
+  directory: 'D:\\new_projects\\cloudQuant',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 55,
+  fileCount: 0
+}
+[2026-03-14T07:50:46.005Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T07:50:46.005Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T08:17:58.269Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:17:58.835Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:06.664Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:10.689Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:17.736Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:17.737Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:17.737Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:18:17.737Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:17.737Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:20.382Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:23.327Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:25.858Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:18:25.858Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:18:25.859Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:18:36.917Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:18:47.999Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:18:48.000Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:18:49.892Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:18:49.893Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:18:49.893Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:18:49.893Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:18:55.136Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:19:13.015Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:19:16.737Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:19:16.738Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:19:16.738Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:19:16.738Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:19:21.684Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:19:39.938Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:19:43.797Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:19:43.798Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:19:43.798Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:19:43.798Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:19:49.032Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:20:07.240Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:20:11.248Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:20:11.503Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:20:11.504Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:20:11.505Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:20:11.505Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:20:17.770Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:20:36.788Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:20:40.799Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:20:40.810Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:20:40.811Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:20:40.811Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:20:40.811Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:20:46.124Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:21:02.455Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:21:06.335Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:21:06.336Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:21:06.337Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:21:06.337Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:21:11.974Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:21:27.164Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:21:31.177Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:21:31.396Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:21:31.397Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:21:31.397Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:21:31.398Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:21:37.235Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:21:53.379Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:21:57.389Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:21:57.707Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:21:57.707Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:21:57.708Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:21:57.708Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:22:03.665Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:22:17.973Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:22:21.973Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:22:22.207Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:22:22.208Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:22:22.208Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:22:22.208Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:22:28.295Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:22:43.139Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:22:47.140Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:22:47.566Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:22:47.566Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:22:47.567Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:22:47.567Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:22:53.788Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:23:09.411Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:23:13.419Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:23:13.757Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:23:13.758Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:23:13.758Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:23:13.759Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:23:19.934Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:23:38.306Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:23:42.312Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:23:42.755Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:23:42.756Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:23:42.756Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:23:42.756Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:23:48.949Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:24:06.406Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:24:10.411Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:24:11.552Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:24:11.553Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:24:11.553Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:24:11.553Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:24:17.845Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:24:34.254Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:24:38.265Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:24:39.004Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:24:39.005Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:24:39.005Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:24:39.006Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:24:45.585Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:25:02.243Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:25:06.244Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:25:06.826Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Unable to connect. Is the computer able to access the url?
+[2026-03-14T08:25:06.826Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:25:06.827Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:25:06.827Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:25:13.216Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:25:29.323Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:25:33.337Z] [ERROR] Failed to send typing action: HttpError: Network request for 'sendChatAction' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+[2026-03-14T08:25:33.979Z] [WARN] [Aggregator] Session error: ses_314b13a5dffeun0XfdlVeqj7Tg: Error: Was there a typo in the url or port?
+[2026-03-14T08:25:33.980Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:25:33.980Z] [ERROR] [Bot] Failed to send session.error message: HttpError: Network request for 'sendMessage' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:321:9
+[2026-03-14T08:25:33.981Z] [INFO] [Aggregator] Session became idle: ses_314b13a5dffeun0XfdlVeqj7Tg
+[2026-03-14T08:25:40.380Z] [ERROR] [PinnedManager] Error updating pinned message: HttpError: Network request for 'editMessageText' failed!
+    at D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:85:15
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async ApiClient.call (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:54:29)
+    at async ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:93:22)
+    at async PinnedMessageManager.updatePinnedMessage (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:528:13)
+    at async PinnedMessageManager.onMessageComplete (file:///D:/source_code/opencode-telegram-bot/dist/pinned/manager.js:141:9)
+    at async SummaryAggregator.onTokensCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:290:13)
+[2026-03-14T08:25:55.358Z] [INFO] [Bot] Created new session via /new command: id=ses_3148c485bffe4jQZqFxmrsDENx, title="New session - 2026-03-14T08:25:55.364Z", project=D:\new_projects\cloudQuant
+[2026-03-14T08:25:55.359Z] [INFO] [PinnedManager] Session changed: ses_3148c485bffe4jQZqFxmrsDENx, title: New session - 2026-03-14T08:25:55.364Z
+[2026-03-14T08:26:00.829Z] [INFO] [PinnedManager] Created and pinned message: 566
+[2026-03-14T08:26:15.203Z] [WARN] Unauthorized access attempt from user ID: 8794378680
+[2026-03-14T08:27:23.319Z] [INFO] [Bot] Using existing session: id=ses_3148c485bffe4jQZqFxmrsDENx, title="New session - 2026-03-14T08:25:55.364Z"
+[2026-03-14T08:27:23.319Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\cloudQuant
+[2026-03-14T08:27:26.631Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T08:32:29.966Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_3148c485bffe4jQZqFxmrsDENx',
+  directory: 'D:\\new_projects\\cloudQuant',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 55,
+  fileCount: 0
+}
+[2026-03-14T08:32:29.966Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T08:32:29.966Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T09:10:31.966Z] [INFO] [Aggregator] Session became idle: ses_3148c485bffe4jQZqFxmrsDENx
+[2026-03-14T09:10:32.130Z] [WARN] [Bot] Markdown parse failed, retrying assistant message in raw mode GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Character '+' is reserved and must be escaped with the preceding '\')
+    at toGrammyError (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async sendMessageWithMarkdownFallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/utils/send-with-markdown-fallback.js:49:9)
+    at async SummaryAggregator.onCompleteCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:159:17)
+[2026-03-14T09:10:39.162Z] [WARN] [Bot] Markdown parse failed, retrying assistant message in raw mode GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Character '>' is reserved and must be escaped with the preceding '\')
+    at toGrammyError (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async sendMessageWithMarkdownFallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/utils/send-with-markdown-fallback.js:49:9)
+    at async SummaryAggregator.onCompleteCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:159:17)
+[2026-03-14T09:10:40.014Z] [WARN] [Bot] Markdown parse failed, retrying assistant message in raw mode GrammyError: Call to 'sendMessage' failed! (400: Bad Request: can't parse entities: Character '+' is reserved and must be escaped with the preceding '\')
+    at toGrammyError (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\error.js:47:12)
+    at ApiClient.callApi (D:\source_code\opencode-telegram-bot\node_modules\grammy\out\core\client.js:97:48)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async sendMessageWithMarkdownFallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/utils/send-with-markdown-fallback.js:49:9)
+    at async SummaryAggregator.onCompleteCallback (file:///D:/source_code/opencode-telegram-bot/dist/bot/index.js:159:17)
+[2026-03-14T09:28:29.275Z] [INFO] [Bot] Using existing session: id=ses_3148c485bffe4jQZqFxmrsDENx, title="New session - 2026-03-14T08:25:55.364Z"
+[2026-03-14T09:28:29.275Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\cloudQuant
+[2026-03-14T09:29:09.105Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T09:34:12.290Z] [ERROR] [Bot] OpenCode API returned an error for session.prompt {
+  sessionId: 'ses_3148c485bffe4jQZqFxmrsDENx',
+  directory: 'D:\\new_projects\\cloudQuant',
+  agent: 'build',
+  modelProvider: 'zai-coding-plan',
+  modelId: 'glm-5',
+  variant: 'default',
+  promptLength: 2,
+  fileCount: 0
+}
+[2026-03-14T09:34:12.291Z] [ERROR] [Bot] session.prompt error details: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T09:34:12.291Z] [ERROR] [Bot] session.prompt raw API error object: TypeError: fetch failed
+    at node:internal/deps/undici/undici:16416:13
+    at async request (file:///D:/source_code/opencode-telegram-bot/node_modules/@opencode-ai/sdk/dist/v2/gen/client/client.gen.js:59:24)
+[2026-03-14T09:43:23.923Z] [INFO] [Aggregator] Question event: question.asked {
+  "id": "que_cebba02d6001lcc4snBzl6jSjW",
+  "sessionID": "ses_3148c485bffe4jQZqFxmrsDENx",
+  "questions": [
+    {
+      "question": "您希望我执行哪些改进优化？",
+      "header": "选择操作",
+      "options": [
+        {
+          "label": "修复损坏代码 (推荐)",
+          "description": "首先修复 engine.py 中的严重损坏代码，确保项目可运行"
+        },
+        {
+          "label": "全面优化改进",
+          "description": "修复损坏代码 + 类型安全 + 性能优化 + 测试增强"
+        },
+        {
+          "label": "仅生成改进计划",
+          "description": "生成详细的改进计划文档，不执行修改"
+        },
+        {
+          "label": "代码审查报告",
+          "description": "运行 BMAD 代码审查，生成完整分析报告"
+        }
+      ],
+      "multiple": true
+    }
+  ],
+  "tool": {
+    "messageID": "msg_cebb6ff85001uemSPKKQwzz9t5",
+    "callID": "call_b7ff8a981a1a4f1f9a126e0d"
+  }
+}
+[2026-03-14T09:43:23.923Z] [INFO] [Aggregator] Question asked: requestID=que_cebba02d6001lcc4snBzl6jSjW, questions=1
+[2026-03-14T09:43:23.924Z] [INFO] [Bot] Received 1 questions from agent, requestID=que_cebba02d6001lcc4snBzl6jSjW
+[2026-03-14T09:43:23.924Z] [INFO] [QuestionManager] Starting new poll with 1 questions, requestID=que_cebba02d6001lcc4snBzl6jSjW
+[2026-03-14T09:43:24.254Z] [INFO] [InteractionManager] Started interaction: kind=question, expectedInput=callback, allowedCommands=/help,/status,/abort
+[2026-03-14T09:45:55.581Z] [INFO] [QuestionHandler] Poll completed: 1/1 questions answered
+[2026-03-14T09:45:55.581Z] [INFO] [QuestionHandler] Sending all 1 answers to agent via question.reply: requestID=que_cebba02d6001lcc4snBzl6jSjW
+[2026-03-14T09:45:55.882Z] [INFO] [InteractionManager] Cleared interaction: reason=question_completed, kind=question, expectedInput=mixed
+[2026-03-14T09:46:15.515Z] [INFO] [Bot] Using existing session: id=ses_3148c485bffe4jQZqFxmrsDENx, title="New session - 2026-03-14T08:25:55.364Z"
+[2026-03-14T09:46:15.515Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\cloudQuant
+[2026-03-14T09:46:47.706Z] [INFO] [QuestionHandler] All answers sent to agent successfully via question.reply
+[2026-03-14T09:46:47.706Z] [INFO] [Aggregator] Question event: question.replied {
+  "sessionID": "ses_3148c485bffe4jQZqFxmrsDENx",
+  "requestID": "que_cebba02d6001lcc4snBzl6jSjW",
+  "answers": [
+    [
+      "继续"
+    ]
+  ]
+}
+[2026-03-14T09:46:47.706Z] [INFO] [Aggregator] Question replied: requestID=que_cebba02d6001lcc4snBzl6jSjW
+[2026-03-14T09:46:47.710Z] [INFO] [Bot] Ignoring new prompt: session ses_3148c485bffe4jQZqFxmrsDENx is busy
+[2026-03-14T09:51:46.668Z] [INFO] [Bot] Created new session via /new command: id=ses_3143dae16ffeKxBTolaxYPBwZ8, title="New session - 2026-03-14T09:51:46.665Z", project=D:\new_projects\cloudQuant
+[2026-03-14T09:51:46.669Z] [INFO] [PinnedManager] Session changed: ses_3143dae16ffeKxBTolaxYPBwZ8, title: New session - 2026-03-14T09:51:46.665Z
+[2026-03-14T09:51:47.694Z] [INFO] [PinnedManager] Created and pinned message: 643
+[2026-03-14T09:51:48.173Z] [WARN] Unauthorized access attempt from user ID: 8794378680
+[2026-03-14T09:51:54.536Z] [INFO] [Bot] Using existing session: id=ses_3143dae16ffeKxBTolaxYPBwZ8, title="New session - 2026-03-14T09:51:46.665Z"
+[2026-03-14T09:51:54.536Z] [INFO] [Bot] Subscribing to OpenCode events for project: D:\new_projects\cloudQuant
+[2026-03-14T09:51:54.540Z] [INFO] [Bot] Calling session.prompt (fire-and-forget) with agent=build, fileCount=0...
+[2026-03-14T09:56:53.408Z] [INFO] [Bot] session.prompt completed
+[2026-03-14T09:56:53.414Z] [INFO] [Aggregator] Session became idle: ses_3143dae16ffeKxBTolaxYPBwZ8

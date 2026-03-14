@@ -28,8 +28,8 @@ function getInstalledAppHome(): string {
 }
 
 function resolveAppHome(mode: RuntimeMode): string {
-  const homeOverride = process.env.OPENCODE_TELEGRAM_HOME;
-  if (homeOverride && homeOverride.trim().length > 0) {
+  const homeOverride = process.env.OPENCODE_TELEGRAM_HOME?.trim();
+  if (homeOverride && homeOverride.length > 0) {
     return path.resolve(homeOverride);
   }
 
